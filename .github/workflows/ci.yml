@@ -1,0 +1,24 @@
+
+name: Home Server CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-website:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check website file
+        run: test -s site/index.html
+
+      - name: Validate HTML file exists
+        run: |
+          echo "Website file found."
+          echo "CI checks passed!"
