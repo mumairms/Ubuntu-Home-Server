@@ -18,7 +18,9 @@ jobs:
       - name: Check website file
         run: test -s site/index.html
 
-      - name: Validate HTML file exists
-        run: |
-          echo "Website file found."
-          echo "CI checks passed!"
+      - name: Validate Docker Compose
+        run: docker compose -f compose.yaml config --quiet
+
+      - name: Report success
+        run: echo "Website and Docker Compose checks passed!"
+
