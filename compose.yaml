@@ -7,6 +7,12 @@ services:
       - "8082:80"
     volumes:
       - ./site:/usr/share/nginx/html:ro
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
     restart: unless-stopped
 
   web2:
@@ -16,5 +22,11 @@ services:
       - "8083:80"
     volumes:
       - ./site:/usr/share/nginx/html:ro
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
     restart: unless-stopped
 
